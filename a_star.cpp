@@ -37,7 +37,26 @@ Here, let's allow movement only row wise and column wise. Therefore we can chang
 3. (0, 1)
 4. (0, -1)
 
-Going further, if we want to allow diagonal movements, we can also include (1, 1), (1, -1), (-1, 1), and (-1, -1), but nako atta dokyala evdha tras
+Going further, if we want to allow diagonal movements, we can also include (1, 1), (1, -1), (-1, 1), and (-1, -1). 
+
+EXAMPLE:
+
+Grid (0=free, 1=obstacle):
+0 1 0 0 0 
+0 1 0 1 0 
+0 1 0 1 0 
+0 0 0 1 0 
+0 0 0 0 0 
+
+Type 1: Only vertical and horizontal movement allowed: 
+
+Finding path from (0,0) to (4,4)
+(0,0) (1,0) (2,0) (3,0) (4,0) (4,1) (4,2) (4,3) (4,4)
+
+Type 2: Diagonal movement allowed:
+
+Finding path from (0,0) to (4,4)
+(0,0) (1,0) (2,0) (3,1) (4,2) (4,3) (4,4) 
 
 
 */
@@ -59,8 +78,8 @@ class Node{
     }
 };
 
-const int dx[] = {1, -1, 0, 0, 1, -1, 1, -1};
-const int dy[] = {0, 0, 1, -1, 1, -1, -1, 1};
+const int dx[] = {1, -1, 0, 0, 1, 1, -1, -1};
+const int dy[] = {0, 0, 1, -1, 1, -1, 1, -1};
 
 int heuristic(Node *a, Node *b){
     return abs(a->x - b->x) + abs(a->y - b->y);
